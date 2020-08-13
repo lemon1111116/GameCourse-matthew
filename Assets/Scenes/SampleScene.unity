@@ -557,6 +557,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 593679990}
+  rb: {fileID: 593679994}
+  jumpForce: 500
 --- !u!61 &593679993
 BoxCollider2D:
   m_ObjectHideFlags: 0
