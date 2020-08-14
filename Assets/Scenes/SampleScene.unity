@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 242711645}
   - component: {fileID: 242711644}
   - component: {fileID: 242711643}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,6 +544,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &593679991 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8263884704612970953, guid: de7142de531c9a644a4569fd100a7ab0,
+    type: 3}
+  m_PrefabInstance: {fileID: 593679988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &593679992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,6 +565,11 @@ MonoBehaviour:
   anim: {fileID: 593679990}
   rb: {fileID: 593679994}
   jumpForce: 500
+  groundPoint: {fileID: 935316329}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  grounded: 0
 --- !u!61 &593679993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -606,3 +617,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &935316328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 935316329}
+  m_Layer: 0
+  m_Name: GroundChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &935316329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935316328}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.26, y: 0.997, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 593679991}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
