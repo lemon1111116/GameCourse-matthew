@@ -32,5 +32,8 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("Jump");
             rb.AddForce(Vector2.up * jumpForce);
         }
+
+        anim.SetFloat("yVelocity", rb.velocity.y);
     }
+
 }
