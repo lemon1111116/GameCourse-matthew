@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
         }
 
         anim.SetFloat("yVelocity", rb.velocity.y);
+        anim.SetBool("Grounded", grounded);
     }
-
+    public void GameOver()
+    {
+        Destroy(gameObject);
+    }
 }
