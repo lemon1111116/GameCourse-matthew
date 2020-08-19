@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Animator anim;
-    public Rigidbody2D rb;
+    Animator anim;
+    Rigidbody2D rb;
 
     public int jumpForce;
 
@@ -13,18 +13,17 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask groundLayer;
 
-    public bool grounded;
+    bool grounded;
 
     public GameObject deathEffect;
 
     public Transform effectPosition;
 
-    public GameObject gameOver;
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
@@ -45,8 +44,10 @@ public class PlayerController : MonoBehaviour
     }
     public void GameOver()
     {
+        //Now just stop the camera controller and kill the player
+        GameManager.instance.cam.followPlayer = false;
         Instantiate(deathEffect, effectPosition.position, Quaternion.identity);
-        gameOver.SetActive(true);
+        GameManager.instance.gameOver.SetActive(true);
         Destroy(gameObject);
     }
 }

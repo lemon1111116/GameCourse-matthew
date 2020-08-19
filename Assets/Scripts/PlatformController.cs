@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PlatformController : MonoBehaviour
 {
-    public Transform[] spawnPositions;
-    public Transform endPosition;
 
     public int moveVel = 5;
 
     Transform startPosition;
 
-    public Transform[] coinSpawnPositions;
+    public Transform[] objectSpawnPositions;
 
     public GameObject coinPrefab;
+    public GameObject hazardPrefab;
 
     GameObject spawnedCoin;
+    GameObject spawnedHazard;
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +26,9 @@ public class PlatformController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x != endPosition.position.x)
+        if (transform.position.x != GameManager.instance.endPosition.position.x)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(endPosition.position.x, transform.position.y, transform.position.z), Time.deltaTime * moveVel);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(GameManager.instance.endPosition.position.x, transform.position.y, transform.position.z), Time.deltaTime * moveVel);
         }
         else
         {
@@ -36,21 +36,32 @@ public class PlatformController : MonoBehaviour
             {
                 Destroy(spawnedCoin);
             }
-            startPosition = spawnPositions[Random.Range(0, spawnPositions.Length)];
+
+            Destroy(spawnedHazard);
+            startPosition = GameManager.instance.spawnPositions[Random.Range(0, GameManager.instance.spawnPositions.Length)];
             transform.position = startPosition.position;
 
             int coin = Random.Range(0, 3);
-            Debug.Log("The coin is" + coin);
+
             switch (coin)
             {
                 case 0:
                 case 1:
-                    spawnedCoin = Instantiate(coinPrefab, coinSpawnPositions[coin].position, Quaternion.identity, transform);
+                    spawnedCoin = Instantiate(coinPrefab, objectSpawnPositions[coin].position, Quaternion.identity, transform);
                     break;
                 case 2:
                 default:
                     break;
             }
+
+            int staticHazard = Random.Range(0, 3);
+            int chances = Random.Range(0, 2);
+
+            if (chances > 0)
+            {
+                spawnedHazard = Instantiate(hazardPrefab, new Vector3(objectSpawnPositions[staticHazard].position.x, objectSpawnPositions[staticHazard].position.y - 0.73f, objectSpawnPositions[staticHazard].position.z), Quaternion.identity, transform);
+            }
+
         }
     }
 }
