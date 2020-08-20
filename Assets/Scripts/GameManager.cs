@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     public Transform[] spawnPositions;
     public Transform endPosition;
 
+    [Header("FireBall Variables")]
+    [Tooltip("If you don't see the spaces to add the fireBallSpawnPositions click the little arrow and type the number then enter")]
+    public Transform[] fireBallSpawnPositions;
+
     [Header("Background Variables")]
     [Tooltip("end position of background tiles")]
     public Transform endPosBG;
