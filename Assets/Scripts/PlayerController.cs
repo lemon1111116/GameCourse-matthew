@@ -19,11 +19,16 @@ public class PlayerController : MonoBehaviour
 
     public Transform effectPosition;
 
+    public GameObject shield;
+
+    public bool shieldOn = false;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        shield.gameObject.SetActive(false);
     }
 
     void FixedUpdate()
@@ -41,6 +46,17 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat("yVelocity", rb.velocity.y);
         anim.SetBool("Grounded", grounded);
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            shield.gameObject.SetActive(true);
+            shieldOn = true;
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            shield.gameObject.SetActive(false);
+            shieldOn = false;
+        }
     }
     public void GameOver()
     {
